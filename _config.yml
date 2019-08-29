@@ -1,13 +1,13 @@
 # Site settings
-title: Think2019 Hands-On Lab 6051
+title: ICP 3.1.2 PoT
 email: dcacy@us.ibm.com
 description: >
-  Using Domino Query Language and Node.js — Domino Developers Edition!
+  Lab documentation for the ICP 3.1.2 PoT
 
-baseurl: "/think2019lab-domino-nodejs" # the subpath of your site, e.g. /blog/
-url: https://icstechsales.github.io/think2019lab-domino-nodejs # the base hostname & protocol for your site
-git_address: https://github.com/icstechsales/think2019lab-node-jsdomino
-git_edit_address: https://github.com/icstechsales/think2019lab-domino-nodejs/tree/gh-pages
+baseurl: "/icp-312-pot" # the subpath of your site, e.g. /blog/
+url: https://dcacy.github.io/icp-312-pot # the base hostname & protocol for your site
+git_address: https://github.com/dcacy/icp-312-pot
+git_edit_address: https://github.com/dcacy/icp-312-pot/tree/icp-312-pot
 
 # theme options from https://bootswatch.com/
 # comment out this to use default Bootstrap
@@ -28,7 +28,7 @@ exclude:
   - .idea/
   - .gitignore
   - README.md
-timezone: America/Los Angeles
+timezone: America/Chicago
 defaults:
 - scope:
     path: _posts

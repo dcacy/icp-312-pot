@@ -1,3 +1,3 @@
-# Think2019lab-domino-integration
+# icp-312-pot-domino-integration
 
-Please click here to run the lab: <https://icstechsales.github.io/think2019lab-domino-nodejs/>
+Please click here to run the lab: <https://dcacy.github.io/icp-312-pot/>
