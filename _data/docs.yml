@@ -5,7 +5,7 @@
   - 03-intro-to-appdev-pack
   - 04-setup
 
-- title: Exercise 1
+- title: Lab 1 - Docker
   docs:
   - ex1a
   - ex1b
@@ -13,20 +13,26 @@
   - ex1d
   - ex1e
 
-- title: Exercise 2
+- title: Lab 2 - Create Helm Chart
   docs:
   - ex2a
   - ex2b
   - ex2c
 
-- title: Exercise 4
+- title: Lab 3 - Register Helm Chart
   docs:
   - ex4a
   - ex4b
   - ex4c
 
-- title: Exercise 5
+- title: Lab 4 - Scale an application
   docs:
   - ex5a
   - ex5b
   - ex5c
+
+- title: Lab 5 - Troubleshooting
+  docs:
+  - ex6a
+  - ex6b
+  - ex6c
