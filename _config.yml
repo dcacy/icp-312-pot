@@ -22,12 +22,13 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-exclude:
+exclude:  
   - Gemfile
   - Gemfile.lock
-  - .idea/
   - .gitignore
   - README.md
+  - .vscode
+  
 timezone: America/Chicago
 defaults:
 - scope:

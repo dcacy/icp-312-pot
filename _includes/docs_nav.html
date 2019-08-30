@@ -1,7 +1,7 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 {% for section in site.data.docs %}
   <div class="panel panel-default">
-    <div class="panel-heading" style="color: #FEC70B; background-color: black" id="ph-{{forloop.index}}">
+    <div class="panel-heading" id="ph-{{forloop.index}}">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{forloop.index}}" aria-expanded="false" aria-controls="collapse-{{forloop.index}}">
           {{ section.title }}

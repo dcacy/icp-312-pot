@@ -44,6 +44,9 @@ body {
   color: transparent;/* #FEC70B;*/
 }
 
+.panel-heading {
+  background-color: #ababab;
+}
 
 .header-container {
   background-color: transparent;/* #FEC70B;*/
@@ -158,4 +161,10 @@ aside::before, .note::before {
   padding: 2px 6px;
   right: 4px;
   top: 4px;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  color: #fff;
+  background-color: #abcabc;
+  border-color: #abcabc;
 }
