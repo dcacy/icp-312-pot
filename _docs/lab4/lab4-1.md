@@ -3,4 +3,6 @@ title: LotusScript!
 permalink: /docs/lab4-1/
 ---
 
-Up to now we've been using DQL and the domino-db package in our node.js applications. This bonus section will show you how to use DQL in your LotusScript agents as well.  This lab assumes that you are comfortable with using Domino Designer to create agents using LotusScript.
+To use images, create a directory in the lab4/images directory with the name of this file, ex. `lab4-1`. The directory structure will then look like `lab4/images/lab4-1`. Place your images there and reference them with
+
+    ![](../lab4/images/lab4-1/image.png)

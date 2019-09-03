@@ -3,8 +3,6 @@ title: Modifying documents
 permalink: /docs/lab2-1/
 ---
 
-These exercises will step through modifying the fields in documents.  We'll start by creating a query which returns the document we want, and then we'll switch to the API which updates the document.
+To use images, create a directory in the lab1/images directory with the name of this file, ex. `lab2-1`. The directory structure will then look like `lab2/images/lab2-1`. Place your images there and reference them with
 
-1. Save the file as `exercise2.js`....
-
-    This will help in case you need to go back and start over. :-)
+    ![](../lab2/images/lab2-1/image.png)

@@ -6,31 +6,24 @@
 - title: Lab 1 - Docker
   docs:
   - lab1-1
-  - lab1-2
-  - lab1-3
-  - lab1-4
-  - lab1-5
 
 - title: Lab 2 - Create Helm Chart
   docs:
   - lab2-1
-  - lab2-2
-  - lab2-3
 
 - title: Lab 3 - Register Helm Chart
   docs:
   - lab3-1
-  - lab3-2
-  - lab3-3
+
 
 - title: Lab 4 - Scale an application
   docs:
   - lab4-1
-  - lab4-2
-  - lab4-3
+
 
 - title: Lab 5 - Troubleshooting
   docs:
   - lab5-1
   - lab5-2
   - lab5-3
+

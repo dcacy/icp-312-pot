@@ -3,8 +3,6 @@ title: Precedence
 permalink: /docs/lab3-1/
 ---
 
-This exercise will help you understand how DQL uses precendence; that is, the order in which it makes use of the **Terms** you provide in order to return results.
+To use images, create a directory in the lab3/images directory with the name of this file, ex. `lab3-1`. The directory structure will then look like `lab3/images/lab3-1`. Place your images there and reference them with
 
-1. Save the file as `exercise3.js`.
-
-    This will help in case you need to go back and start over. :-)
+    ![](../lab3/images/lab3-1/image.png)

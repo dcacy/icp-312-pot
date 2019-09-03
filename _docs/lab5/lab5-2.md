@@ -1,91 +1,64 @@
 ---
-title: Create an agent
+title: View Logs
 permalink: /docs/lab5-2/
 ---
 
-We'll of course use Domino Designer to create our LotusScript application. For this exercise, we'll create an agent which we can invoke via a URL.
+This section will show you how to view an application's logs in two ways: using the browser and using the command line.
 
-1. Open Domino Designer (the icon is on the Desktop) and log in with the password of `passw0rd'.
+1. The deployment page of an application shows each pod hosting the application. Float your cursor on the far right of one of the pods, and click on its ellipsis (the three dots). From the menu which appears, choose **View logs**.
 
-1. Open the node-demo.nsf database on the server, in the dql directory, as shown in the following screen shot:
+    ![](../lab5/images/lab5-2/view-logs-link.png)
 
-    ![](../images/ex4b/open-db.jpg)
+    ICP's kibana page opens, filtered to show only the logs produced by the pod we've chosen. Our application logs some information when it starts up, but your page may look like the following, showing no results.
 
-1. Create a new agent by expanding the **Code** section, right-clicking on **Agents**, and choosing **New Agent..**
+    ![](../lab5/images/lab5-2/no-results.png)
 
-    ![](../images/ex4b/new-agent.jpg)
+1. If you see no results, it's because your application started more than 15 minutes prior to when you viewed the logs, and the default filter for Kibana is to show the last 15 minutes worth of logs. Click the *left* arrow to go back in the logs until you see some logging output.
 
-1. Name the agent `exercise5`, make sure the Type is Java, and click **OK**.
+    ![](../lab5/images/lab5-2/left-arrow.png)
 
-1. Double click on the JavaAgent.java file to open it.
 
-1. Replace the content which is in the agent already with the following code (remember to use the copy/paste technique discussed in the introduction [here]({{ site.baseurl }}/docs/02-using-the-image/)):
+1. You should see logs like the following image. When our application starts, it logs three lines: its version number (`Version 1.8.1`, kernel information of the host machine (in this case, `Arch: x86_64, Release: 3.10.0-957.el7.x86_64`), and the pod name and listening port (`9ngsj: server starting on port 3000`). Leave this tab open while you continue with the lab.
 
-      ```
-    import java.io.PrintWriter;
-    import lotus.domino.AgentBase;
-    import lotus.domino.Database;
-    import lotus.domino.Document;
-    import lotus.domino.DocumentCollection;
-    import lotus.domino.DominoQuery;
-    import lotus.domino.Session;
+    ![](../lab5/images/lab5-2/log-data.png)
 
-    public class JavaAgent extends AgentBase {
+1. Let's use the application to put more infomation into the logs. In your browser, go back to the Deployment page for `kubetoy-1` and click on the **Launch** button in the top right.
 
-      public void NotesMain() {
-        PrintWriter pw = this.getAgentOutput();
-        try {
-          Session session = getSession();
-          Database db = session.getCurrentDatabase();
-          DominoQuery query = db.createDominoQuery();
-          String queryString = " Form = 'Contact' ";
-          DocumentCollection dc = query.execute(queryString);
-          Document doc = dc.getFirstDocument();
-          boolean isFirst = true;
-          StringBuffer sb = new StringBuffer();
-          sb.append("[");
-          while (doc != null && doc.isValid()) {
-            String firstName = doc.getItemValueString("FirstName");
-            String lastName = doc.getItemValueString("LastName");
-            if (!isFirst)
-              sb.append(",");
-            sb.append("{");
-            sb.append("\"firstname\":" + "\"" + firstName + "\",");
-            sb.append("\"lastname\":" + "\"" + lastName + "\"");
-            sb.append("}");
-            isFirst = false;
-            doc = dc.getNextDocument();
-          }
-          sb.append("]");
-          pw.println("Content-Type: application/json");
-          pw.println(sb.toString());
-        } catch (Throwable e) {
-          e.printStackTrace(pw);
-          pw.println("error occurred");
-          pw.println(e.getMessage());
-          pw.println(e.getLocalizedMessage());
-        }
-      }
-    }
+    ![](../lab5/images/lab5-2/launch-button.png)
+
+1. The Kubetoy application will open in a separate browser tab. You can use this application to write a message to the logs. Try it by putting a message in the text field marked **Message for stdout** and click the `Log it!` button.
+
+    ![](../lab5/images/lab5-2/stdout-msg.png)
+
+1. In your Kibana tab, use the right arrow to change the time filter, and you should see your log message appear.
+
+    ![](../lab5/images/lab5-2/stdout-results.png)
+
+1. Now let's use the command line to view logs. ICP has a built-in way to use the command line from within the browser itself. Back on the Deployment page for the `kubetoy-1` application, click on the blue button in the lower right corner to open a command window.
+
+    ![](../lab5/images/lab5-2/command-line-button.png)
+
+1. Click in the command window to give it focus, and log in to ICP by typing `cloudctl login` and hitting Enter. Use `admin` for the username and password. When prompted, choose the `default` namespace.  You should see an **OK** message and be returned to the command line, as in the following image:
+
+    ![](../lab5/images/lab5-2/command-line-log-in.png)
+
+
+
+1. Type the following command, using *your* pod name (you can copy/paste the pod name from the browser window):
 
     ```
+    kubectl logs -f <your pod name>
+    ```
 
-1. Make sure there are no errors, then save the file.
+    In the example below, the pod name is **kubetoy-1-665bff5b55-9ngsj**.
 
-1. Switch to the **exercise5 - Agent** tab, and change the target for the agent to None by selecting the **Target** dropdown in the Properties section, and changing the value to **None**.
+    ![](../lab5/images/lab5-2/kubectl-logs.png)
 
-    ![](../images/ex5b/change-target.jpg)
+    You can see the same output here that we saw in Kibana. You can go back to the Kubetoy application and send another message to stdout or stderr and see it show up in the command window.
 
-1. Save the agent.
-
-    Before we run the agent, let's take a look at what it is doing. Lines 16-18 are where we will focus:
-
-    ![](../images/ex5b/code-details.jpg)
-
-    Line 16 defines an object using the new (in Designer v10.0.1) `DominoQuery` class.
+    | Create stderr message    | View stderr message |
+    | :---: | :---: |
+    | ![](../lab5/images/lab5-2/create-stderr-message.png)   | ![](../lab5/images/lab5-2/view-stderr-message.png) |
     
-    Line 17 creates the DQL query, which is exactly like the one we used in exercise1.
 
-    Line 18 creates and executes the DQL query.
-
-    The rest of the code uses typical Java techniques; one convenience of using DQL in Java is that it returns a familiar `DocumentCollection` object, which makes it easy to integrate DQL into your Java code.
+1. The command window in the browser times out after a short while; you can start over by closing the window and clicking the command window button again. To avoid this problem, open a command window on the system itself and execute the commands above to log in to ICP and begin logging the output of the pod. Experiment with issuing messages to stdout and stderr and observing them in the logs.

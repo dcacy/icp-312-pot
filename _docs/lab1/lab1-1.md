@@ -1,47 +1,8 @@
 ---
-title: Step 1 - Your first app
+title: Step 1
 permalink: /docs/lab1-1/
 ---
 
-The **domino-db** package is installed and you are ready to write your first node.js application.  
+To use images, create a directory in the lab1/images directory with the name of this file, ex. `lab1-1`. The directory structure will then look like `lab1/images/lab1-1`. Place your images there and reference them with
 
-1. From the Desktop, double click on the `Think_6051` directory.
-
-    ![](../lab1/images/lab1-1/results.jpg)
-
-1. From there, open the `exercises` directory, where you'll see the file called `exercise1.js`.  Right click on that file and choose **Open with -> Atom**.
-
-    ![](../images/ex1a/open-with-atom.jpg)
-
-
-    The file should open in the Atom editor.  Note the first few lines of the code:
-
-    ![](../images/ex1a/code.jpg)
-
-
-    These lines do three things:
-    1. Require (import) the domino-db package.
-    2. Define the server by host name and port.
-    3. Identify the database to be used by directory and file name.
-   
-
-1. Starting on line 18 is the section which uses the `bulkReadDocuments` API call, passing a **query**.  That query is a Domino Query Language string which needs to be created in the application. You can see that string in line 14, commented out.  Uncomment that line and save the file, as shown below.
-
-    ![](../images/ex1a/query-uncommented.jpg)
-
-
-1. This query will return all documents which have the string `Contact` in the field named `Form`.  Let's test the application from the command prompt.  You should already have a command prompt open (if not, open one by clicking on its icon in the system tray and change to the `Desktop\Think_6051\exercises` directory).
-
-
-1. Run the program by typing `node exercise1.js` and hitting Enter.  You should see results scroll across the screen, similar to the screen shot below:
-
-    ![](../images/ex1a/results1.jpg)
-
-The `documentRange` object contains useful information about the query: there are a total of 200 documents in the database matching the query (`total: 200`), and the call has returned 100 documents (`count: 100`), starting with the first document (`start: 0`).
-
-Also notice that we have some information about each document. For each document, a domino-db request will return three values:
-
-1. `@unid` - the unique ID of the document
-2. `@created` - the date the document was created
-3. `@modified` - the date the document was last modified
-
+    ![](../lab1/images/lab1-1/image.png)

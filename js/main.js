@@ -5,28 +5,12 @@ $(function() {
     .parent(".collapse")
     .collapse("show");
 
-  //DP: Trying something
-  $("#ph-1").click(function() {
-    //window.location.href = "/icp-312-pot-domino-integration/docs/fullDoc-Intro/";
-    return;
-  });
-
-  $("#ph-2").click(function() {
-    //window.location.href = "/icp-312-pot-domino-integration/docs/article-Intro/";
-    return;
-  });
-
-  $("#ph-3").click(function() {
-    //window.location.href = "/icp-312-pot-domino-integration/docs/info-intro/";
-    return;
-  });
-
   var pages = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace("title"),
     // datumTokenizer: Bloodhound.tokenizers.whitespace,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
 
-    prefetch: baseurl + "/search.json"
+    //prefetch: baseurl + "/search.json"
   });
 
   $("#search-box").typeahead(
